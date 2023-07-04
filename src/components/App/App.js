@@ -13,12 +13,13 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Routes>
-        <Route
-          path='/'
-          element={<Main />}
-        />
-        {/* <Route
+      <div className='page__container'>
+        <Routes>
+          <Route
+            path='/'
+            element={<Main />}
+          />
+          {/* <Route
           path='/movies'
           element={<Movies />}
         />
@@ -38,7 +39,8 @@ function App() {
           path='/signup'
           element={<Register />}
         /> */}
-      </Routes>
+        </Routes>
+      </div>
     </CurrentUserContext.Provider>
   );
 }
