@@ -1,11 +1,10 @@
 .techs {
-  margin: 110px 0;
   padding: 100px 70px;
   background-color: #272727;
 }
 
 .techs__title {
-  margin: 0 0 90px 0;
+  margin: 0 0 90px;
   padding-bottom: 23px;
   font-size: 22px;
   font-weight: 400;
@@ -22,7 +21,7 @@
 }
 
 .techs__desc-title {
-  margin: 0 0 26px 0;
+  margin: 0 0 26px;
   font-size: 50px;
   font-weight: 400;
   line-height: 58px;
@@ -42,6 +41,7 @@
 .techs__skills {
   margin: 0;
   padding: 0;
+  gap: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +54,6 @@
   align-items: center;
   min-width: 90px;
   min-height: 60px;
-  margin-right: 10px;
   border-radius: 10px;
   background-color: #303030;
   font-size: 14px;
@@ -65,4 +64,92 @@
 
 .techs__skill:last-child {
   margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    margin: 0;
+    padding: 90px 50px;
+  }
+
+  .techs__title {
+    margin-bottom: 80px;
+  }
+
+  .techs__desc-title {
+    margin-bottom: 23px;
+  }
+
+  .techs__desc-text {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__container {
+    margin-bottom: 83px;
+  }
+
+  .techs__skill {
+    min-width: 84px;
+    min-height: 57px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .techs__skills {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .techs {
+    margin-bottom: 0;
+    padding: 68px 18px;
+  }
+
+  .techs__title {
+    margin-bottom: 60px;
+  }
+
+  .techs__desc-title {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__desc-text {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .techs {
+    background-color: #202020;
+  }
+
+  .techs__container {
+    margin-bottom: 50px;
+  }
+
+  .techs__title {
+    margin-bottom: 54px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    border-bottom: #000000;
+  }
+
+  .techs__desc-title {
+    margin-bottom: 13px;
+  }
+
+  .techs__skills {
+    margin: auto;
+    max-width: 180px;
+    justify-content: flex-start;
+  }
+
 }

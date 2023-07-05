@@ -21,7 +21,6 @@
 
 .footer__date {
   font-size: 13px;
-  font-family: Inter;
   line-height: normal;
 }
 
@@ -46,4 +45,66 @@
 
 .footer__link:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    margin: 0 30px;
+  }
+
+  .footer__title {
+    margin-bottom: 22px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .footer {
+    margin: 0 10px;
+  }
+
+  .footer__title {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    margin-top: 79px;
+  }
+
+  .footer__title {
+    margin-bottom: 30px;
+  }
+
+  .footer__container {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer__menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 31px;
+  }
+
+  .footer__link {
+    margin-right: 0;
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .footer__link:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer__date {
+    color: #8B8B8B;
+    font-size: 12px;
+    line-height: normal;
+  }
+
 }

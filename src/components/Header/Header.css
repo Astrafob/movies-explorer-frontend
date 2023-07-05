@@ -42,3 +42,28 @@
 .header__login:hover {
   opacity: 0.7;
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    padding: 18px 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__register {
+    font-size: 10px;
+    margin-right: 14px;
+  }
+
+  .header__login {
+    font-size: 10px;
+    min-height: 26px;
+    min-width: 54px;
+  }
+}

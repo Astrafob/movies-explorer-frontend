@@ -1,5 +1,5 @@
 .nav-tab {
-  margin: -10px 40px 0 40px;
+  margin: -10px 40px 0;
   padding-bottom: 30px;
   background-color: #272727;
   border-radius: 0 0 10px 10px;
@@ -17,7 +17,7 @@
 
 .nav-tab__list {
   margin-right: 10px;
-  background-color: #303030;  
+  background-color: #303030;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -42,4 +42,29 @@
 
 .nav-tab__link:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-tab {
+    margin: -10px 20px 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .nav-tab {
+    margin: -10px 14px 0;
+    padding-bottom: 17px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .nav-tab__list {
+    margin-right: 6px;
+  }
+
+  .nav-tab__link {
+    font-size: 10px;
+    min-width: 82px;
+    min-height: 26px;
+  }
 }

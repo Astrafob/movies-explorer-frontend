@@ -1,9 +1,9 @@
 .portfolio {
-  margin: 0 70px 204px 70px;
+  margin: 0 70px 204px;
 }
 
 .portfolio__title {
-  margin: 0 0 50px 0;
+  margin: 0 0 50px;
   color: #8B8B8B;
   font-size: 18px;
   font-weight: 400;
@@ -47,4 +47,51 @@
 
 .portfolio__link:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    margin: 0 50px 170px;
+  }
+
+  .portfolio__text {
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+    margin-bottom: 19px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+    line-height: 50px;
+    letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .portfolio__link {
+    font-size: 23px;
+    line-height: 35px;
+    letter-spacing: -1px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .portfolio {
+    margin: 0 14px 151px;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+    background-position: 98.5% 50%;
+    background-size: 11px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio__title {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 40px;
+  }
 }
