@@ -4,6 +4,10 @@
   padding: 18px 70px;
 }
 
+.header__link {
+  max-height: 38px;
+}
+
 .header__menu {
   display: flex;
   align-items: center;
