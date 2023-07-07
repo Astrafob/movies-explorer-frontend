@@ -1,0 +1,32 @@
+.movies-cards {
+  margin: 80px 70px;
+}
+
+.movies-cards__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 24px;
+}
+
+.movies-cards__more {
+  padding: 0;
+  margin: 80px auto 0;
+  min-width: 320px;
+  min-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  border: 1.5px solid #424242;
+  border-radius: 6px;
+  background-color: #202020;
+  cursor: pointer;
+}
+
+.movies-cards__more:hover {
+  opacity: 0.7;
+}

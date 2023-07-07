@@ -1,5 +1,6 @@
 .footer {
   margin: 0 70px;
+  padding: 80px 0 20px;
 }
 
 .footer__title {
@@ -14,7 +15,6 @@
 }
 
 .footer__container {
-  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -69,7 +69,7 @@
 
 @media screen and (max-width: 320px) {
   .footer {
-    margin-top: 79px;
+    padding-top: 79px;
   }
 
   .footer__title {

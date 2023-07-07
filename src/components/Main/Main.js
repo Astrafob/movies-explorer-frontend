@@ -8,17 +8,20 @@ import Portfolio from './Portfolio/Portfolio.js';
 import Footer from '../Footer/Footer.js';
 
 function Main() {
-  return(
-    <div className="main">
-      <Header/>
-      <Promo/>
-      <NavTab/>
-      <AboutProject/>
-      <Techs/>
-      <AboutMe/>
-      <Portfolio/>
-      <Footer/>
-    </div>
+  return (
+    <>
+      <Header />
+      <main className="main">
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
+      <Footer />
+    </>
+
   )
 }
 

@@ -1,5 +1,5 @@
 .portfolio {
-  margin: 0 70px 204px;
+  margin: 0 70px 124px;
 }
 
 .portfolio__title {
@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 768px) {
   .portfolio {
-    margin: 0 50px 170px;
+    margin: 0 50px 90px;
   }
 
   .portfolio__text {
@@ -63,6 +63,8 @@
     font-size: 28px;
     line-height: 50px;
     letter-spacing: -1.12px;
+    background-position: 99.2% 60%;
+    background-size: 17px;
   }
 }
 
@@ -76,7 +78,7 @@
 
 @media screen and (max-width: 450px) {
   .portfolio {
-    margin: 0 14px 151px;
+    margin: 0 14px 80px;
   }
 
   .portfolio__link {
@@ -89,6 +91,10 @@
 }
 
 @media screen and (max-width: 320px) {
+  .portfolio {
+    margin-bottom: 72px;
+  }
+
   .portfolio__title {
     font-size: 14px;
     line-height: 20px;

@@ -1,4 +1,4 @@
-import studentPhoto from '../../../images/pic__COLOR_pic.png';
+import studentPhoto from '../../../images/photo-studet.png';
 
 function AboutMe() {
   return (
