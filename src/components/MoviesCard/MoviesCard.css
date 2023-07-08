@@ -32,7 +32,7 @@
   line-height: normal;
 }
 
-.movie-card__favorite {
+.movie-card__favorite-button {
   padding: 0;
   margin-right: 14px;
   display: flex;
@@ -41,17 +41,20 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background-image: url('../../../images/button-favorite_inactive.svg');
   background-color: transparent;
   transition: opacity 0.2s ease, background-image 0.2s ease;
 }
 
-.movie-card__favorite_active {
-  background-image: url('../../../images/button-favorite_active.svg');
+.movie-card__favorite-button_inactive {
+  background-image: url('../../images/button-favorite_inactive.svg');
 }
 
-.movie-card__favorite_active:hover {
-  background-image: url('../../../images/button-delete-favorite.svg');
+.movie-card__favorite-button_delete {
+  background-image: url('../../images/button-delete-favorite.svg');
+}
+
+.movie-card__favorite-button_active {
+  background-image: url('../../images/button-favorite_active.svg');
 }
 
 .movie-card__image {
@@ -63,6 +66,10 @@
   display: flex;
 }
 
-.movie-card__favorite:hover {
+.movie-card__favorite-button:hover {
   opacity: 0.7;
+}
+
+.movie-card__favorite-button_active:hover {
+  background-image: url('../../images/button-delete-favorite.svg');
 }
