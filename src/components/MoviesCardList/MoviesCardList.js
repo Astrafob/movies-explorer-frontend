@@ -1,6 +1,8 @@
+import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({ moviesList }) {
+  const { pathname } = useLocation();
 
   return (
     <section className="movies-cards">
@@ -12,9 +14,12 @@ function MoviesCardList({ moviesList }) {
           />
         ))}
       </div>
-      <button className="movies-cards__more">
-        Ещё
-      </button>
+      {pathname === "/movies" ? (
+        <button className="movies-cards__more">
+          Ещё
+        </button>
+      ) : ''
+      }
     </section>
   )
 }
