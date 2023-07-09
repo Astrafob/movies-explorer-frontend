@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import BurgerButton from '../BurgerButton/BurgerButton';
 
 function Navigation() {
   const { pathname } = useLocation();
@@ -13,13 +14,14 @@ function Navigation() {
   const thisPageSaveMoviesClassName = (
     `nav__link ${pathname === '/saved-movies'
       ? 'nav__link_active'
-      : '' 
+      : ''
     }`
   );
 
   return (
-    <>
+    <section className='navigation'>
       <nav className="nav">
+        <div className="nav__container">
         <Link
           to="/movies"
           className={thisPageMoviesClassName}
@@ -32,12 +34,14 @@ function Navigation() {
         >
           Сохраненные фильмы
         </Link>
+        </div>
+        <Link
+          to="/profile"
+          className="profile-button"
+        ></Link>
       </nav>
-      <Link
-        to="/profile"
-        className="profile-button"
-      ></Link>
-    </>
+      <BurgerButton />
+    </section>
   )
 }
 

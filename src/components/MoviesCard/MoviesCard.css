@@ -15,7 +15,7 @@
 
 .movie-card__title {
   margin: 0 0 9px;
-  width: 280px;
+  max-width: 280px;
   font-size: 15px;
   font-weight: 500;
   line-height: normal;
@@ -72,4 +72,46 @@
 
 .movie-card__favorite-button_active:hover {
   background-image: url('../../images/button-delete-favorite.svg');
+}
+
+@media screen and (max-width: 768px) {
+  .movie-card__title {
+    max-width: 230px;
+  }
+
+  .movie-card {
+    min-width: 339px;
+  }
+
+  .movie-card__image {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .movie-card__title {
+    max-width: 210px;
+  }
+
+  .movie-card {
+    min-width: 300px;
+  }
+
+  .movie-card__image {
+    height: 168px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .movie-card__title {
+    max-width: 210px;
+  }
+
+  .movie-card {
+    min-width: 100%;
+  }
+
+  .movie-card__image {
+    height: 168px;
+  }
 }

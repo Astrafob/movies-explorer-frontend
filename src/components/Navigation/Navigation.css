@@ -1,7 +1,20 @@
+.navigation {
+  display: flex;
+  width: 100%;
+}
+
 .nav {
+  display: flex;
+  visibility: visible;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.nav__container {
   margin-left: 63px;
   display: flex;
-  color: white;
+  justify-content: center;
+  width: 100%;
 }
 
 .nav__link {
@@ -24,6 +37,7 @@
 
 .profile-button {
   min-width: 100px;
+  min-height: 30px;
   background-image: url("../../images/profile-icon.svg");
   background-repeat: no-repeat;
   background-position: right;
@@ -40,4 +54,20 @@
 
 .profile-button:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 1000px) {
+  .navigation {
+    justify-content: end;
+    align-items: center;
+    margin-right: 7px;
+  }
+
+  .nav {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 500;
+  }
 }

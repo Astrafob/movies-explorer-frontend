@@ -105,3 +105,32 @@
 .search-form__switch:focus + .search-form__checkbox-inner::before {
   outline: 1px solid gray;
 }
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    margin: 80px 30px;
+  }
+
+  .search-form__checkbox {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .search-form {
+    margin: 80px 14px 50px;
+  }
+
+  .search-form__input {
+    padding-left: 12px;
+    height: 14px;
+  }
+
+  .search-form__checkbox{
+    margin-top: 44px;
+  }
+
+  .search-form__checkbox-inner {
+    font-size: 11px;
+  }
+}

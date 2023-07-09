@@ -7,7 +7,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.js';
 import Profile from '../Profile/Profile.js';
 import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
-// import NotFound from '../NotFound/NotFound.js';
+import NotFound from '../NotFound/NotFound.js';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -39,14 +39,14 @@ function App() {
             path='/signup'
             element={<Register />}
           />
-          {/* <Route
+          <Route
             path="*"
             element={<Navigate to="/404" replace />}
           />
           <Route
             path="/404"
             element={<NotFound />}
-          /> */}
+          />
         </Routes>
     </CurrentUserContext.Provider>
   );

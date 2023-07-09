@@ -14,14 +14,12 @@ function Header({ loggedIn }) {
           <Link
             className="header__register"
             to="/signup"
-            type="button"
           >
             Регистрация
           </Link>
           <Link
             className="header__login"
             to="/signin"
-            type="button"
           >
             Войти
           </Link>

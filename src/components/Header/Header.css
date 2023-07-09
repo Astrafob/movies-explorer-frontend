@@ -1,12 +1,13 @@
 .header {
   display: flex;
-  justify-content: space-between;
   padding: 18px 70px;
 }
 
 .header__menu {
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .header__register {

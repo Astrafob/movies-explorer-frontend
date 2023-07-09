@@ -70,14 +70,22 @@
   visibility: visible;
 }
 
-.auth__buttons {
+.auth__buttons-reg {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth__buttons-log {
+  width: 100%;
+  margin-top: 69px;
   display: flex;
   flex-direction: column;
 }
 
 .auth__button {
-  width: 396px;
   min-height: 45px;
+  padding: 0;
   background-color: #4285F4;
   border: none;
   color: #FFF;
@@ -87,6 +95,7 @@
   line-height: normal;
   border: none;
   cursor: pointer;
+  border-radius: 3px;
   transition: opacity .2s ease;
 }
 
@@ -116,4 +125,39 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .auth {
+    margin-top: 231px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .auth {
+    margin-top: 56px;
+    align-items: center;
+    gap: 50px;
+    width: 260px;
+  }
+
+  .auth__title {
+    margin-bottom: 30px;
+  }
+
+  .auth__from {
+    margin-bottom: 180px;
+  }
+
+  .auth__button {
+    font-size: 12px;
+  }
+
+  .auth__question {
+    font-size: 12px;
+  }
+
+  .auth__link {
+    font-size: 12px;
+  }
 }

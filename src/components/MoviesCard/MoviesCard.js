@@ -15,7 +15,7 @@ function MoviesCard({ movie }) {
   );
 
   function handleMovieFavorite() {
-    setIsFavorite(current => !current)
+    setIsFavorite(!isFavorite);
   }
 
   function getTimeFromMins(duration) {

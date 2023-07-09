@@ -1,6 +1,7 @@
 .profile {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .profile__title {
@@ -86,4 +87,51 @@
   min-height: 45px;
   background-color: #4285F4;
   border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    margin-top: 161px;
+  }
+
+  .profile__title {
+    margin-bottom: 98px;
+  }
+
+  .profile__form {
+    margin-bottom: 209px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    margin-top: 0;
+  }
+
+  .profile__title {
+    margin-top: 70px;
+    margin-bottom: 81px;
+  }
+
+  .profile__form {
+    max-width: 260px;
+    margin-bottom: 379px;
+  }
+
+  .profile__form-input {
+    padding: 0;
+  }
+
+  .profile__form-container {
+    max-width: 260px;
+    padding-bottom: 15px;
+  }
+
+  .profile__submit {
+    width: 260px;
+  }
+
+  .profile__button {
+    font-size: 12px;
+  }
 }

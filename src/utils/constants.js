@@ -10,7 +10,7 @@ export
       trailerLink: 'https://www.kinopoisk.ru/film/61237/video/6427/',
       thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/ef1ec447-530a-41f3-9cfc-c2cf4f5b6467/1920x',
       movieId: 1,
-      nameRU: 'Железны человек',
+      nameRU: 'Железны человек Железны человек',
       nameEN: 'Iron Man',
     },
     {
@@ -23,7 +23,7 @@ export
       trailerLink: 'https://www.kinopoisk.ru/film/411924/video/19918/',
       thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/b6ac1ee0-61e8-4941-b1ff-a6ad5b5fa55b/1920x',
       movieId: 2,
-      nameRU: 'Железный человек 2',
+      nameRU: 'Железный человек 2 Железный человек 2',
       nameEN: 'Iron Man 2',
     },
     {
@@ -36,7 +36,7 @@ export
       trailerLink: 'https://www.kinopoisk.ru/film/462762/video/76741/',
       thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/8d42b33c-bce8-45c7-8bdc-fc82154be8df/1920x',
       movieId: 3,
-      nameRU: 'Железный человек 3',
+      nameRU: 'Железный человек 3 Железный человек 3',
       nameEN: 'Iron Man Three',
     },
     {
@@ -64,19 +64,6 @@ export
       movieId: 5,
       nameRU: 'Железный человек 2',
       nameEN: 'Iron Man 2',
-    },
-    {
-      country: 'США',
-      director: 'Шейн Блэк',
-      duration: 125,
-      year: 2013,
-      description: 'Когда мир Старка рушится на его глазах по вине неизвестных противников, Тони жаждет найти виновных и свести с ними счеты. Оказавшись в безвыходной ситуации, Старк может рассчитывать только на себя и свою изобретательность, чтобы защитить тех, кто ему дорог. Это становится настоящим испытанием для героя, которому придется не только сражаться с коварным врагом, но и разобраться в себе, чтобы найти ответ на вопрос, который давно его тревожит: что важнее - человек или костюм?',
-      image: 'https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/8d42b33c-bce8-45c7-8bdc-fc82154be8df/1920x',
-      trailerLink: 'https://www.kinopoisk.ru/film/462762/video/76741/',
-      thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/8d42b33c-bce8-45c7-8bdc-fc82154be8df/1920x',
-      movieId: 6,
-      nameRU: 'Железный человек 3',
-      nameEN: 'Iron Man Three',
     },
   ];
 
