@@ -1,23 +1,19 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import Main from '../Main/Main.js';
 import Movies from '../Movies/Movies.js';
 import SavedMovies from '../SavedMovies/SavedMovies.js';
 import Profile from '../Profile/Profile.js';
-// import Login from '../Login/Login.js';
-// import Register from '../Register/Register.js';
+import Login from '../Login/Login.js';
+import Register from '../Register/Register.js';
+// import NotFound from '../NotFound/NotFound.js';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
 
-  function handleUpdateUser(data) {
-    setCurrentUser(data);
-  };
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className='page__container'>
         <Routes>
           <Route
             path='/'
@@ -34,18 +30,24 @@ function App() {
           <Route
             path='/profile'
             element={<Profile />}
-            onUpdateUser={handleUpdateUser}
           />
-          {/* <Route
+          <Route
           path='/signin'
           element={<Login />}
         />
-        <Route
-          path='/signup'
-          element={<Register />}
-        /> */}
+          <Route
+            path='/signup'
+            element={<Register />}
+          />
+          {/* <Route
+            path="*"
+            element={<Navigate to="/404" replace />}
+          />
+          <Route
+            path="/404"
+            element={<NotFound />}
+          /> */}
         </Routes>
-      </div>
     </CurrentUserContext.Provider>
   );
 }

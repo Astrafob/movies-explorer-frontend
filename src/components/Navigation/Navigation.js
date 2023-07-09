@@ -17,7 +17,6 @@ function Navigation() {
     }`
   );
 
-
   return (
     <>
       <nav className="nav">
@@ -36,7 +35,7 @@ function Navigation() {
       </nav>
       <Link
         to="/profile"
-        className="profile"
+        className="profile-button"
       ></Link>
     </>
   )

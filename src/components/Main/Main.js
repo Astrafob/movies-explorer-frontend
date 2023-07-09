@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer.js';
 
 function Main() {
   return (
-    <>
+    <div className='page__container'>
       <Header />
       <main className="main">
         <Promo />
@@ -20,7 +20,7 @@ function Main() {
         <Portfolio />
       </main>
       <Footer />
-    </>
+    </div>
 
   )
 }

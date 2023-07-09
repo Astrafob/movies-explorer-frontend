@@ -1,25 +1,14 @@
 import { Link } from 'react-router-dom';
-import headerLogo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
+import Logo from '../Logo/Logo';
 
 function Header({ loggedIn }) {
 
   return (
     <header className="header">
-      <Link
-        to="/"
-        className="header__link"
-      >
-        <img
-          className="logo"
-          src={headerLogo}
-          alt="Логотип проекта"
-        />
-      </Link>
+      <Logo />
       {(loggedIn ?
-        <>
           <Navigation />
-        </>
         :
         <div className="header__menu">
           <Link

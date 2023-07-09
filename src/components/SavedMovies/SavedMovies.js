@@ -21,7 +21,7 @@ function SavedMovies() {
   }, [loggedIn]);
 
   return (
-    <>
+    <div className='page__container'>
       <Header
       loggedIn={loggedIn}
       />
@@ -32,7 +32,7 @@ function SavedMovies() {
         />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

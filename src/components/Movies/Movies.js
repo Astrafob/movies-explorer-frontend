@@ -20,7 +20,7 @@ function Movies() {
   }, [loggedIn]);
 
   return (
-    <>
+    <div className='page__container'>
       <Header
         loggedIn={loggedIn}
       />
@@ -31,7 +31,7 @@ function Movies() {
         />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

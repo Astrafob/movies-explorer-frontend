@@ -27,7 +27,7 @@ function MoviesCard({ movie }) {
   return (
     <section className="movie-card">
       <div className="movie-card__info">
-        <div className="movies-card__container">
+        <div className="movie-card__container">
           <h2 className="movie-card__title">{movie.nameRU}</h2>
           <p className="movie-card__duration">
             {getTimeFromMins(movie.duration)}

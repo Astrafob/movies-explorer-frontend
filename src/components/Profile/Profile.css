@@ -1,4 +1,4 @@
-.profile__container {
+.profile {
   display: flex;
   flex-direction: column;
 }
@@ -78,6 +78,7 @@
 .profile__button_type_exit {
   font-weight: 500;
   color: #EE3465;
+  text-decoration: none;
 }
 
 .profile__submit {
