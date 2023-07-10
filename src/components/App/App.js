@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import Main from '../Main/Main.js';
@@ -10,10 +10,11 @@ import Register from '../Register/Register.js';
 import NotFound from '../NotFound/NotFound.js';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  // const [currentUser, setCurrentUser] = useState({});
+  // value={currentUser}
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider>
         <Routes>
           <Route
             path='/'
