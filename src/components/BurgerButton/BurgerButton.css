@@ -1,4 +1,6 @@
-.burger {}
+.burger {
+  display: block;
+}
 
 .burger__overlay {
   margin: 0;
