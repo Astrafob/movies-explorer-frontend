@@ -1,14 +1,83 @@
-.burger {
+.burger {}
+
+.burger__overlay {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  top: 0;
+  left: 0;
+  transition: background-color .3s ease;
+  z-index: -1;
+}
+
+.burger__overlay_visible {
+  background-color: rgba(0, 0, 0, .3);
+  position: fixed;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.burger__menu {
+  position: fixed;
+  right: -100%;
+  transition: right 0.5s ease;
+}
+
+.burger__menu_opened {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  right: 0;
+  width: 520px;
+  max-height: 100%;
+  background-color: #202020;
+  position: relative;
+}
+
+.burger__menu-list {
+  padding: 0;
+  margin: 159px 0 621px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  gap: 28px
+}
+
+.burger__menu-link {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  padding-bottom: 4px;
+}
+
+.burger__menu-link_active {
+  border-bottom: 2px solid white;
+}
+
+.burger__menu-profile {
+  width: 100px;
+  height: 30px;
+  background-image: url("../../images/profile-icon.svg");
+  background-repeat: no-repeat;
+  transition: opacity 0.2s ease;
+}
+
+.burger__button {
   padding: 0;
   visibility: hidden;
-  position: absolute;
   display: flex;
   border: none;
   width: 28px;
   height: 23px;
   cursor: pointer;
   background-color: inherit;
-  position: relative;
+  position: fixed;
 }
 
 .burger__span {
@@ -43,21 +112,25 @@
   transition: transform .2s ease;
 }
 
-.burger_opened::after {
+.burger__button_opened::after {
   transform: scale(0);
 }
 
-.burger_opened {
+.burger__button_opened {
+  position: fixed;
+  top: 36px;
   transform: rotate(45deg);
 }
 
-.burger_opened::before {
-  transform:  rotate(-90deg) translateX(10px);
+.burger__button_opened::before {
+  transform: rotate(-90deg) translateX(10px);
 }
 
 @media screen and (max-width: 1000px) {
-  .burger {
+  .burger__button {
     visibility: visible;
     position: relative;
+    z-index: 2;
   }
 }
+
