@@ -1,27 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Header from '../Header/Header';
-import { Link } from 'react-router-dom';
-// import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ onUpdateUser }) {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
-    name: 'Виталий',
-    email: 'pochta@yandex.ru'
-  });
-
+function Profile({ loggedIn, setLoggedIn }) {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isEdit, setIsEdit] = useState(false);
+  const dataUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    setLoggedIn(true);
-  }, []);
-
-  useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
-  }, [currentUser]);
+    setName(dataUser.name);
+    setEmail(dataUser.email);
+  }, [dataUser]);
 
   function handleEditChange() {
     setIsEdit(true);
@@ -38,12 +30,15 @@ function Profile({ onUpdateUser }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    setCurrentUser({
-      name: name,
-      email: email,
-    });
+    
 
     setIsEdit(false);
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    navigate('/sign-in');
   }
 
   return (
@@ -53,7 +48,7 @@ function Profile({ onUpdateUser }) {
       />
       <main>
         <section className="profile">
-          <h1 className="profile__title">Привет, {currentUser.name}!</h1>
+          <h1 className="profile__title">Привет, {dataUser.name}!</h1>
           <form className="profile__form">
             <label className="profile__form-container">
               <span className="profile__form-text">Имя</span>
@@ -109,6 +104,7 @@ function Profile({ onUpdateUser }) {
                   to="/signin"
                   className="profile__button profile__button_type_exit"
                   type="button"
+                  onClick={handleSignOut}
                 >
                   Выйти из аккаунта
                 </Link>

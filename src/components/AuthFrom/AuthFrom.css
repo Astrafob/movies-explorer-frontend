@@ -38,7 +38,7 @@
 
 .auth__from-input {
   width: 100%;
-  margin: 0;
+  margin: 0 0 6px;
   padding: 0 0 10px;
   background-color: #202020;
   border: none;
@@ -99,8 +99,17 @@
   transition: opacity .2s ease;
 }
 
+.auth__button[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .auth__button:hover {
   opacity: 0.7;
+}
+
+.auth__button[disabled]:hover {
+  opacity: 0.3;
 }
 
 .auth__button-wrapper {

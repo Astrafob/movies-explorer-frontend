@@ -5,19 +5,8 @@ import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { moviesList } from "../../utils/constants";
 
-function Movies() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function Movies({ loggedIn }) {
   const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    setLoggedIn(true);
-  }, []);
-
-  useEffect(() => {
-    if (loggedIn) {
-      setMovies(moviesList);
-    }
-  }, [loggedIn]);
 
   return (
     <div className='page__container'>

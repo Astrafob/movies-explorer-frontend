@@ -6,24 +6,13 @@ import { useEffect, useState } from "react";
 import { moviesFavoriteList } from "../../utils/constants";
 
 
-function SavedMovies() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function SavedMovies({ loggedIn }) {
   const [moviesFavorite, setMoviesFavorite] = useState([]);
-
-  useEffect(() => {
-    setLoggedIn(true);
-  }, []);
-
-  useEffect(() => {
-    if (loggedIn) {
-      setMoviesFavorite(moviesFavoriteList);
-    }
-  }, [loggedIn]);
 
   return (
     <div className='page__container'>
       <Header
-      loggedIn={loggedIn}
+        loggedIn={loggedIn}
       />
       <main>
         <SearchForm />

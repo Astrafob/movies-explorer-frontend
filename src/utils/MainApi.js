@@ -14,7 +14,6 @@ class MainApi {
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
-      method: 'GET',
       headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
@@ -74,6 +73,12 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Получили ошибку: ${res.status} ${res.statusText}`);
+  }
 }
 
 const apiMain = new MainApi(apiMainConfig);

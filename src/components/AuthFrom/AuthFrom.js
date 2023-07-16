@@ -1,8 +1,93 @@
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../Logo/Logo'
+import { useState } from 'react';
 
-function AuthFrom() {
+function AuthFrom({ onSubmit }) {
   const { pathname } = useLocation();
+  const [valueFrom, setValueForm] = useState({});
+  const [errorMessageForm, setErrorMessageForm] = useState({});
+  const formRegiserIsValid = (
+    !errorMessageForm.name
+    && !errorMessageForm.email
+    && !errorMessageForm.password
+    && errorMessageForm.name === ''
+    && errorMessageForm.email === ''
+    && errorMessageForm.password === ''
+  );
+
+  const formLoginIsValid = (
+    !errorMessageForm.email
+    && !errorMessageForm.password
+    && errorMessageForm.email === ''
+    && errorMessageForm.password === ''
+  );
+
+  function handleChangeName(event) {
+    const { name, value } = event.target;
+    setValueForm({
+      ...valueFrom,
+      [name]: value
+    });
+
+    setErrorMessageForm({
+      ...errorMessageForm,
+      [name]: event.target.validationMessage
+    })
+  }
+
+  function handleChangeEmail(event) {
+    const { name, value } = event.target;
+    setValueForm({
+      ...valueFrom,
+      [name]: value
+    });
+
+    setErrorMessageForm({
+      ...errorMessageForm,
+      [name]: event.target.validationMessage
+    })
+  }
+
+  function handleChangePassword(event) {
+    const { name, value } = event.target;
+    setValueForm({
+      ...valueFrom,
+      [name]: value
+    });
+
+    setErrorMessageForm({
+      ...errorMessageForm,
+      [name]: event.target.validationMessage
+    })
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    onSubmit(valueFrom);
+    console.log(valueFrom);
+  }
+
+  const errorMessageNameClassName = (
+    `auth__from-input-error ${errorMessageForm.name === undefined
+      ? ''
+      : 'auth__from-input-error_visible'
+    }`
+  )
+
+  const errorMessageEmailClassName = (
+    `auth__from-input-error ${errorMessageForm.email === undefined
+      ? ''
+      : 'auth__from-input-error_visible'
+    }`
+  )
+
+  const errorMessagePasswordClassName = (
+    `auth__from-input-error ${errorMessageForm.password === undefined
+      ? ''
+      : 'auth__from-input-error_visible'
+    }`
+  )
 
   return (
     <section className="auth">
@@ -10,19 +95,30 @@ function AuthFrom() {
       <h1 className="auth__title">
         {pathname === "/signup" ? "Добро пожаловать!" : "Рады видеть!"}
       </h1>
-      <form className="auth__from">
+      <form
+        id="authForm"
+        className="auth__from"
+        onSubmit={handleSubmit}
+      >
         {pathname === "/signup"
           ? (
             <label className="auth__from-container">
               <span className="auth__from-name">Имя</span>
               <input
                 className="auth__from-input"
-                name="userName"
+                name="name"
                 type="text"
                 placeholder="Заполните Имя"
+                minLength={2}
+                maxLength={18}
                 required
-              ></input>
-              <span className="auth__from-input-error"></span>
+                onChange={handleChangeName}
+              />
+              <span
+                className={errorMessageNameClassName}
+              >
+                {errorMessageForm.name || ''}
+              </span>
             </label>
           ) : ''
         }
@@ -32,10 +128,16 @@ function AuthFrom() {
             className="auth__from-input"
             name="email"
             type="email"
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             placeholder="Заполните E-mail"
             required
-          ></input>
-          <span className="auth__from-input-error"></span>
+            onChange={handleChangeEmail}
+          />
+          <span
+            className={errorMessageEmailClassName}
+          >
+            {errorMessageForm.email || ''}
+          </span>
         </label>
         <label className="auth__from-container">
           <span className="auth__from-name">Пароль</span>
@@ -44,9 +146,15 @@ function AuthFrom() {
             name="password"
             type="password"
             placeholder="Укажите пароль"
+            minLength={6}
             required
-          ></input>
-          <span className="auth__from-input-error"></span>
+            onChange={handleChangePassword}
+          />
+          <span
+            className={errorMessagePasswordClassName}
+          >
+            {errorMessageForm.password || ''}
+          </span>
         </label>
       </form>
       {pathname === "/signup"
@@ -54,7 +162,9 @@ function AuthFrom() {
           <div className="auth__buttons-reg">
             <button
               className="auth__button"
+              form="authForm"
               type="submit"
+              disabled={!formRegiserIsValid}
             >
               Зарегистрироваться
             </button>
@@ -72,7 +182,9 @@ function AuthFrom() {
           <div className="auth__buttons-log">
             <button
               className="auth__button"
+              form="authForm"
               type="submit"
+              disabled={!formLoginIsValid}
             >
               Войти
             </button>
