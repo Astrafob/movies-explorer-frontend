@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Logo from '../Logo/Logo'
 import { useState } from 'react';
 
-function AuthFrom({ onSubmit }) {
+function AuthFrom({ onSubmit, errorCatch, disabledInput }) {
   const { pathname } = useLocation();
   const [valueFrom, setValueForm] = useState({});
   const [errorMessageForm, setErrorMessageForm] = useState({});
@@ -65,7 +65,6 @@ function AuthFrom({ onSubmit }) {
     event.preventDefault();
 
     onSubmit(valueFrom);
-    console.log(valueFrom);
   }
 
   const errorMessageNameClassName = (
@@ -89,6 +88,23 @@ function AuthFrom({ onSubmit }) {
     }`
   )
 
+  const errorMessageCatchClassName = (
+    `auth__from-catch-error ${errorCatch === undefined
+      ? ''
+      : 'auth__from-catch-error_visible'
+    }`
+  )
+
+  function errorMessageCatchText() {
+    if (errorCatch === "Получили ошибку: 409 Conflict") {
+      return ("Пользователь с таким Email уже зарегистрирован")
+    } if (errorCatch === "Получили ошибку: 400 Bad Request") {
+      return ("Введены некоретные данные")
+    } if (errorCatch === "Получили ошибку: 401 Unauthorized") {
+      return ("Неверный логин или пароль")
+    } return ("");
+  }
+
   return (
     <section className="auth">
       <Logo />
@@ -110,7 +126,8 @@ function AuthFrom({ onSubmit }) {
                 type="text"
                 placeholder="Заполните Имя"
                 minLength={2}
-                maxLength={18}
+                maxLength={30}
+                disabled={disabledInput}
                 required
                 onChange={handleChangeName}
               />
@@ -130,6 +147,7 @@ function AuthFrom({ onSubmit }) {
             type="email"
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             placeholder="Заполните E-mail"
+            disabled={disabledInput}
             required
             onChange={handleChangeEmail}
           />
@@ -147,6 +165,7 @@ function AuthFrom({ onSubmit }) {
             type="password"
             placeholder="Укажите пароль"
             minLength={6}
+            disabled={disabledInput}
             required
             onChange={handleChangePassword}
           />
@@ -156,6 +175,11 @@ function AuthFrom({ onSubmit }) {
             {errorMessageForm.password || ''}
           </span>
         </label>
+        <span
+          className={errorMessageCatchClassName}
+        >
+          {errorMessageCatchText()}
+        </span>
       </form>
       {pathname === "/signup"
         ? (

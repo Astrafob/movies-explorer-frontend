@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import Main from '../Main/Main.js';
 import Movies from '../Movies/Movies.js';
@@ -9,23 +9,60 @@ import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
 import NotFound from '../NotFound/NotFound.js';
 import apiMain from '../../utils/MainApi.js';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.js';
+import apiAuth from '../../utils/AuthApi.js';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     if (loggedIn) {
       Promise.all([apiMain.getUserInfo()])
         .then(([dataUser]) => {
-          setCurrentUser(dataUser);
-          console.log(dataUser);
+          setLoggedIn(true);
+          setCurrentUser({ ...dataUser, loggedIn: true });
         })
         .catch((error) => {
           console.log(error);
         })
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      apiAuth.getContent(jwt)
+        .then((data) => {
+          setLoggedIn(true);
+          setCurrentUser({ ...data, loggedIn: true });
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }, []);
+
+  function handleUpdateUser(userInfo) {
+    apiMain.setUserInfo(userInfo)
+      .then(data => {
+        setCurrentUser(data);
+        setIsSuccess(true);
+      })
+      .catch((error) => {
+        setIsSuccess(false);
+        console.log(error)
+      })
+      .finally(() => {
+        setIsInfoTooltipPopupOpen(true);
+      })
+  }
+
+  function closePopup() {
+    setIsInfoTooltipPopupOpen(false);
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -38,34 +75,53 @@ function App() {
         />
         <Route
           path='/movies'
-          element={<Movies
-            loggedIn={loggedIn}
-          />}
-        />
+          element={
+            <ProtectedRoute
+              element={Movies}
+              currentUser={currentUser}
+              loggedIn={loggedIn}
+            />
+          } />
         <Route
           path='/saved-movies'
-          element={<SavedMovies
-            loggedIn={loggedIn}
-          />}
-        />
+          element={
+            <ProtectedRoute
+              element={SavedMovies}
+              currentUser={currentUser}
+              loggedIn={loggedIn}
+            />
+          } />
         <Route
           path='/profile'
-          element={<Profile
-            loggedIn={loggedIn}
-            setLoggedIn={setLoggedIn}
-          />}
+          element={
+            <ProtectedRoute
+              element={Profile}
+              currentUser={currentUser}
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              onUpdateUser={handleUpdateUser}
+              isOpen={isInfoTooltipPopupOpen}
+              onClose={closePopup}
+              isSuccess={isSuccess}
+            />}
         />
         <Route
           path='/signin'
-          element={<Login
-            setLoggedIn={setLoggedIn}
-          />}
+          element={
+            loggedIn
+              ? <Navigate to='/movies' />
+              : <Login
+                setLoggedIn={setLoggedIn}
+              />}
         />
         <Route
           path='/signup'
-          element={<Register
-            setLoggedIn={setLoggedIn}
-          />}
+          element={
+            loggedIn
+              ? <Navigate to='/movies' />
+              : <Register
+                setLoggedIn={setLoggedIn}
+              />}
         />
         <Route
           path="*"

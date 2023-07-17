@@ -1,13 +1,15 @@
 import AuthFrom from "../AuthFrom/AuthFrom";
 import apiAuth from '../../utils/AuthApi.js';
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login({ setLoggedIn }) {
-  // const [isSuccess, setIsSuccess] = useState(false);
-  // const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
+  const [disabledInput, setDisabledInput] = useState(false);
+  const [errorCatch, setErrorCatch] = useState('');
   const navigate = useNavigate();
 
   function handleAuthorize(userInfo) {
+    setDisabledInput(true);
     apiAuth.authorize(userInfo)
       .then(data => {
         if (data.token) {
@@ -18,9 +20,11 @@ function Login({ setLoggedIn }) {
         }
       })
       .catch((error) => {
-        // setIsSuccess(false);
-        // setIsInfoTooltipPopupOpen(true);
+        setErrorCatch(error);
         console.log(error)
+      })
+      .finally(() => {
+        setDisabledInput(false);
       })
   }
 
@@ -29,6 +33,8 @@ function Login({ setLoggedIn }) {
       <main>
         <AuthFrom
           onSubmit={handleAuthorize}
+          errorCatch={errorCatch}
+          disabledInput={disabledInput}
         />
       </main>
     </div>

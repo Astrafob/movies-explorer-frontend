@@ -7,7 +7,6 @@ function BurgerButton() {
 
   function handleOpenBurger(event) {
     isOpenBurger(!openBurger);
-    console.log(event);
   }
 
   const thisPageMoviesClassName = (

@@ -4,29 +4,29 @@ import { useNavigate } from "react-router-dom";
 import apiAuth from '../../utils/AuthApi.js';
 
 function Register({ setLoggedIn }) {
-  // const [isSuccess, setIsSuccess] = useState(false);
-  // const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
+  const [disabledInput, setDisabledInput] = useState(false);
+  const [errorCatch, setErrorCatch] = useState('');
   const navigate = useNavigate();
 
   function handleRegister(userInfo) {
+    setDisabledInput(true);
     apiAuth.register(userInfo)
       .then(() => {
         return apiAuth.authorize(userInfo);
       })
       .then(data => {
-        // setIsSuccess(true);
         console.log(data);
         localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
         navigate('/movies');
       })
       .catch((error) => {
-        // setIsSuccess(false);
+        setErrorCatch(error);
         console.log(error);
       })
-    // .finally(() => {
-    //   setIsInfoTooltipPopupOpen(true);
-    // })
+      .finally(() => {
+        setDisabledInput(false);
+      })
   }
 
   return (
@@ -34,6 +34,8 @@ function Register({ setLoggedIn }) {
       <main>
         <AuthFrom
           onSubmit={handleRegister}
+          errorCatch={errorCatch}
+          disabledInput={disabledInput}
         />
       </main>
     </div>

@@ -15,7 +15,6 @@
 }
 
 .auth__from {
-  margin-bottom: 103px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -70,6 +69,22 @@
   visibility: visible;
 }
 
+.auth__from-catch-error {
+  margin-top: 103px;
+  visibility: visible;
+  text-align: center;
+  min-height: 10px;
+  color: #EE3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.auth__from-catch-error_visible {
+  visibility: visible;
+}
+
 .auth__buttons-reg {
   width: 100%;
   display: flex;
@@ -78,7 +93,7 @@
 
 .auth__buttons-log {
   width: 100%;
-  margin-top: 69px;
+  /* margin-top: 69px; */
   display: flex;
   flex-direction: column;
 }
@@ -154,8 +169,8 @@
     margin-bottom: 30px;
   }
 
-  .auth__from {
-    margin-bottom: 180px;
+  .auth__from-catch-error {
+    margin-top: 180px;
   }
 
   .auth__button {
