@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { MOVIES_URL } from '../../utils/constants';
 
 function MoviesCard({ movie }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -7,11 +8,11 @@ function MoviesCard({ movie }) {
 
   const movieFavoriteButtonClassName = (
     `movie-card__favorite-button ${pathname === '/movies'
-            ? isFavorite
-              ? 'movie-card__favorite-button_active'
-              : 'movie-card__favorite-button_inactive'
-            : 'movie-card__favorite-button_delete'
-        }`
+      ? isFavorite
+        ? 'movie-card__favorite-button_active'
+        : 'movie-card__favorite-button_inactive'
+      : 'movie-card__favorite-button_delete'
+    }`
   );
 
   function handleMovieFavorite() {
@@ -35,11 +36,16 @@ function MoviesCard({ movie }) {
         </div>
         <button className={movieFavoriteButtonClassName} aria-label="favorite" type="button" onClick={handleMovieFavorite}></button>
       </div>
-      <img
-        src={movie.image}
-        alt="Обложка фильма"
-        className="movie-card__image"
-      />
+      <a
+      href={movie.trailerLink}
+      target="_blank" rel="noreferrer"
+      >
+        <img
+          src={`${MOVIES_URL}${movie.image.url}`}
+          alt="Обложка фильма"
+          className="movie-card__image"
+        />
+      </a>
     </section>
   )
 }

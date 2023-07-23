@@ -83,15 +83,16 @@
 //       nameEN: 'Iron Man',
 //     },
 //   ];
+export const MOVIES_URL = 'https://api.nomoreparties.co';
 
-export const apiAuthConfig = {
+export const API_AUTH_CONFIG = {
   url: 'https://api.movies-explorer.astra.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json'
   }
 }
 
-export const apiMainConfig = {
+export const API_MAIN_CONFIG = {
   url: 'https://api.movies-explorer.astra.nomoredomains.rocks',
   headers: {
     'authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -99,7 +100,7 @@ export const apiMainConfig = {
   }
 }
 
-export const apiMoviesConfig = {
+export const API_MOVIES_CONFIG = {
   url: 'https://api.nomoreparties.co/beatfilm-movies',
   headers: {
     'Content-Type': 'application/json'

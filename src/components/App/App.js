@@ -14,16 +14,20 @@ import apiAuth from '../../utils/AuthApi.js';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+  const [savedMovies, setSavedMovies] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     if (loggedIn) {
-      Promise.all([apiMain.getUserInfo()])
-        .then(([dataUser]) => {
-          setLoggedIn(true);
+      Promise.all([apiMain.getUserInfo(), apiMain.getSavedMovies()])
+        .then(([dataUser, dataSavedMovies]) => {
           setCurrentUser({ ...dataUser, loggedIn: true });
+          console.log(dataUser);
+          setSavedMovies(dataSavedMovies);
+          localStorage.setItem('savedMovies', JSON.stringify(dataSavedMovies));
+          console.log(dataSavedMovies);
         })
         .catch((error) => {
           console.log(error);
@@ -80,6 +84,8 @@ function App() {
               element={Movies}
               currentUser={currentUser}
               loggedIn={loggedIn}
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
             />
           } />
         <Route
@@ -89,6 +95,8 @@ function App() {
               element={SavedMovies}
               currentUser={currentUser}
               loggedIn={loggedIn}
+              savedMovies={savedMovies}
+              setSavedMovies={setSavedMovies}
             />
           } />
         <Route

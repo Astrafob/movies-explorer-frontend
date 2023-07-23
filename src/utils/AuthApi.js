@@ -1,4 +1,4 @@
-import { apiAuthConfig } from './constants';
+import { API_AUTH_CONFIG } from './constants';
 
 class AuthApi {
   constructor(options) {
@@ -48,6 +48,6 @@ class AuthApi {
   }
 }
 
-const apiAuth = new AuthApi(apiAuthConfig);
+const apiAuth = new AuthApi(API_AUTH_CONFIG);
 
 export default apiAuth;

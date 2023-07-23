@@ -26,6 +26,23 @@
   line-height: 18px;
 }
 
+.search-form__input-error {
+  padding: 5px 20px;
+  visibility: hidden;
+  min-width: 100%;
+  min-height: 10px;
+  color: #EE3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: start;
+}
+
+.search-from__input-error_visible {
+  visibility: visible;
+}
+
 .search-form__button {
   display: flex;
   min-width: 44px;
@@ -43,7 +60,7 @@
 }
 
 .search-form__checkbox {
-  margin-top: 28px;
+  margin-top: 8px;
   display: flex;
   justify-content: center;
   align-items: center;

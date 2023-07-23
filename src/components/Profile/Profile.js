@@ -72,7 +72,7 @@ function Profile({ loggedIn, setLoggedIn, onUpdateUser, isOpen, onClose, isSucce
   }
 
   function handleSignOut() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     setLoggedIn(false);
     navigate('/');
   }
