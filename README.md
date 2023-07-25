@@ -2,6 +2,7 @@
 Репозиторий для приложения проекта `movies-explorer-frontend`, включающий фронтенд часть приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.
 
 Адрес репозитория: https://github.com/Astrafob/movies-explorer-frontend
+Pull request: https://github.com/Astrafob/movies-explorer-frontend/pull/2
 
 ## Ссылки на проект
 
