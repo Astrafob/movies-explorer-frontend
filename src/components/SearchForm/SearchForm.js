@@ -6,11 +6,11 @@ function SearchForm({ onSearch, query, checkBox }) {
   const [checked, setChecked] = useState(checkBox || false);
   const { pathname } = useLocation();
 
-  const handleInputChange = (event) => {
+  function handleInputChange(event) {
     setQuerySearch(event.target.value);
   };
 
-  const handleCheckboxChange = (event) => {
+  function handleCheckboxChange(event) {
     setChecked(event.target.checked);
     submitCallback(event.target.checked)
   };
@@ -22,7 +22,7 @@ function SearchForm({ onSearch, query, checkBox }) {
     }`
   )
 
-  const submitCallback = (checked) => {
+  function submitCallback(checked) {
     if (pathname === '/saved-movies') {
       const searchOptions = {
         query: querySearch,
@@ -40,7 +40,7 @@ function SearchForm({ onSearch, query, checkBox }) {
     }
   }
 
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
 
     submitCallback(checked)

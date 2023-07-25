@@ -1,8 +1,9 @@
 import { useLocation } from 'react-router-dom';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useEffect, useState } from 'react';
+import { MOVIES_URL } from '../../utils/constants';
 
-function MoviesCardList({ moviesList }) {
+function MoviesCardList({ moviesList, savedMovies, onSavedMovie, onDeleteSavedMovie }) {
   const { pathname } = useLocation();
   const [amountOfFilm, setAmountOfFilm] = useState(12);
   const windowWidth = window.innerWidth;
@@ -49,12 +50,18 @@ function MoviesCardList({ moviesList }) {
             <MoviesCard
               key={movie.id}
               movie={movie}
+              savedMovies={savedMovies}
+              image={`${MOVIES_URL}${movie.image.url}`}
+              onSavedMovie={onSavedMovie}
             />
           ))) :
           moviesList.map(movie => (
             <MoviesCard
-              key={movie.id}
+              key={movie._id}
               movie={movie}
+              savedMovies={moviesList}
+              image={movie.image}
+              onDeleteSavedMovie={onDeleteSavedMovie}
             />
           ))}
       </div>

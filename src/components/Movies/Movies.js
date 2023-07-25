@@ -8,29 +8,6 @@ import apiMovies from "../../utils/MoviesApi";
 import apiMain from "../../utils/MainApi";
 
 function Movies({ loggedIn }) {
-  // const [movies, setMovies] = useState([]);
-  // const [moviesSearch, setMoviesSearch] = useState([]);
-  // const [preloader, setPreloader] = useState(false);
-
-  // function getMovies() {
-  //   setPreloader(true);
-  //   apiMovies.getMovies()
-  //     .then((dataMovies) => {
-  //       setMovies(dataMovies);
-  //       localStorage.setItem('movies', JSON.stringify(dataMovies));
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     .finally(() => {
-  //       setPreloader(false);
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   getMovies();
-  // },[]);
-
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [moviesSearch, setMoviesSearch] = useState([]);
@@ -43,63 +20,95 @@ function Movies({ loggedIn }) {
 
   useEffect(() => {
     getMovies();
-    getSavedMovies()
+    getSavedMovies();
   }, []);
 
   function getMovies() {
-    return apiMovies.getMovies()
-      .then(res => {
-        setPreloader(true)
-        setMovies(res)
-        localStorage.setItem('movies', JSON.stringify(res))
+    apiMovies.getMovies()
+      .then((data) => {
+        setPreloader(true);
+        setMovies(data);
+        localStorage.setItem('movies', JSON.stringify(data));
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       })
-      .finally(() => setPreloader(false))
+      .finally(() => setPreloader(false));
   }
 
   function getSavedMovies() {
-    setPreloader(true)
-    return apiMain.getSavedMovies()
-      .then(res => {
-        setSavedMovies(res)
-        localStorage.setItem('savedMovies', JSON.stringify(res))
+    apiMain.getSavedMovies()
+      .then((data) => {
+        setPreloader(true);
+        setSavedMovies(data);
+        localStorage.setItem('savedMovies', JSON.stringify(data));
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       })
-      .finally(() => setPreloader(false))
+      .finally(() => setPreloader(false));
   }
 
-  const handleSearchMovies = (searchOptions) => {
-    localStorage.setItem('searchOptions', JSON.stringify(searchOptions))
+  function handleSearchMovies(searchOptions) {
+    localStorage.setItem('searchOptions', JSON.stringify(searchOptions));
     const { query, shortFilm } = searchOptions;
 
     const filter = movies.filter((movie) => {
-      const isIncluded = movie.nameRU.toLowerCase().includes(query.toLowerCase());
+      const includ = movie.nameRU.toLowerCase().includes(query.toLowerCase());
       const short = movie.duration <= 40;
       if (shortFilm) {
-        return isIncluded && short;
+        return includ && short;
       } else {
-        return isIncluded;
+        return includ;
       }
     });
 
     if (query === '' || filter.length === 0) {
-      setEmptyResult(true)
+      setEmptyResult(true);
     }
     else {
-      setEmptyResult(false)
+      setEmptyResult(false);
     }
 
     localStorage.setItem('searchResult', JSON.stringify(filter));
     setMoviesSearch(filter);
   }
 
-  useEffect(() => {
-    localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
-  }, [savedMovies])
+  function handleSavedMovie(movie) {
+    const isLiked = savedMovies.some(i => i.movieId === movie.id);
+    if (!isLiked) {
+      addSavedMovie(movie)
+    } else {
+      savedMovies.forEach(saveMovie => {
+        if (saveMovie.movieId === movie.id) {
+          deleteSavedMovie(saveMovie)
+        }
+      })
+    }
+  }
+
+  function addSavedMovie(movie) {
+    apiMain.addSavedMovie(movie)
+      .then((data) => {
+        setSavedMovies([...savedMovies, data]);
+        getSavedMovies();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(console.log('фильм добавлен'))
+  }
+
+  function deleteSavedMovie(saveMovie) {
+    apiMain.deleteSavedMovie(saveMovie)
+      .then((data) => {
+        getSavedMovies();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(console.log('фильм удален'))
+  }
 
   return (
     <div className='page__container'>
@@ -112,13 +121,16 @@ function Movies({ loggedIn }) {
           query={query}
           checkBox={shortFilm}
         />
-        {(emptyResult || query === '') &&
+        {(emptyResult) &&
           <span className='empty-result'>Ничего не найдено</span>
         }
         {preloader && <Preloader />}
         {(!emptyResult && query !== '') &&
           <MoviesCardList
             moviesList={JSON.parse(localStorage.getItem('searchResult')) || moviesSearch}
+            savedMovies={savedMovies}
+            onSavedMovie={handleSavedMovie}
+            onDeleteSavedMovie={deleteSavedMovie}
           />
         }
       </main>

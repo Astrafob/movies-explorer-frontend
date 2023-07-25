@@ -1,4 +1,5 @@
 import { API_MAIN_CONFIG } from "./constants";
+import { MOVIES_URL } from "./constants";
 
 class MainApi {
   constructor(options) {
@@ -57,8 +58,9 @@ class MainApi {
         duration: duration,
         year: year,
         description: description,
-        image: image,
+        image: MOVIES_URL + image.url,
         trailer: trailerLink,
+        thumbnail: MOVIES_URL + image.formats.thumbnail.url,
         movieId: id,
         nameRU: nameRU,
         nameEN: nameEN,
@@ -66,8 +68,8 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
-  deleteSavedMovie(idMovie) {
-    return fetch(`${this._url}/movies/${idMovie}`, {
+  deleteSavedMovie(movie) {
+    return fetch(`${this._url}/movies/${movie._id}`, {
       method: 'DELETE',
       headers: this._getHeaders(),
     }).then(this._checkResponse);

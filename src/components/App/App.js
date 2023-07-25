@@ -51,7 +51,7 @@ function App() {
 
   function handleUpdateUser(userInfo) {
     apiMain.setUserInfo(userInfo)
-      .then(data => {
+      .then((data) => {
         setCurrentUser(data);
         setIsSuccess(true);
       })
@@ -93,10 +93,7 @@ function App() {
           element={
             <ProtectedRoute
               element={SavedMovies}
-              currentUser={currentUser}
               loggedIn={loggedIn}
-              savedMovies={savedMovies}
-              setSavedMovies={setSavedMovies}
             />
           } />
         <Route
