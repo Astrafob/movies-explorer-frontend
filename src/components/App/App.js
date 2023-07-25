@@ -24,10 +24,8 @@ function App() {
       Promise.all([apiMain.getUserInfo(), apiMain.getSavedMovies()])
         .then(([dataUser, dataSavedMovies]) => {
           setCurrentUser({ ...dataUser, loggedIn: true });
-          console.log(dataUser);
           setSavedMovies(dataSavedMovies);
           localStorage.setItem('savedMovies', JSON.stringify(dataSavedMovies));
-          console.log(dataSavedMovies);
         })
         .catch((error) => {
           console.log(error);

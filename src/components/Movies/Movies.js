@@ -96,7 +96,6 @@ function Movies({ loggedIn }) {
       .catch((error) => {
         console.log(error);
       })
-      .finally(console.log('фильм добавлен'))
   }
 
   function deleteSavedMovie(saveMovie) {
@@ -107,7 +106,6 @@ function Movies({ loggedIn }) {
       .catch((error) => {
         console.log(error);
       })
-      .finally(console.log('фильм удален'))
   }
 
   return (

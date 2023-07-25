@@ -60,7 +60,6 @@ function SavedMovies({ loggedIn }) {
       .catch((error) => {
         console.log(error);
       })
-      .finally(console.log('фильм удален'))
   }
 
   return (
