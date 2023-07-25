@@ -27,7 +27,7 @@
 }
 
 .search-form__input-error {
-  padding: 5px 20px;
+  margin-top: 5px;
   visibility: hidden;
   min-width: 100%;
   min-height: 10px;
