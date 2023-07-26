@@ -1,22 +1,32 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function MoviesCard({ movie }) {
-  const [isFavorite, setIsFavorite] = useState(false);
+function MoviesCard({ movie, image, savedMovies, onSavedMovie, onDeleteSavedMovie }) {
   const { pathname } = useLocation();
+  const [isFavorite, setIsFavorite] = useState(false);
+  const isLiked = savedMovies.some(i => i.movieId === movie.id);
 
   const movieFavoriteButtonClassName = (
     `movie-card__favorite-button ${pathname === '/movies'
-            ? isFavorite
-              ? 'movie-card__favorite-button_active'
-              : 'movie-card__favorite-button_inactive'
-            : 'movie-card__favorite-button_delete'
-        }`
+      ? isLiked
+        ? 'movie-card__favorite-button_active'
+        : 'movie-card__favorite-button_inactive'
+      : 'movie-card__favorite-button_delete'
+    }`
   );
 
   function handleMovieFavorite() {
-    setIsFavorite(!isFavorite);
+    const isLiked = savedMovies.some(i => i.movieId === movie.id);
+    if (isLiked) {
+      setIsFavorite(!isFavorite);
+    }
+    onSavedMovie(movie);
   }
+
+  function handleDeleteSavedMovie() {
+    onDeleteSavedMovie(movie);
+  }
+
 
   function getTimeFromMins(duration) {
     let hours = Math.trunc(duration / 60);
@@ -33,13 +43,27 @@ function MoviesCard({ movie }) {
             {getTimeFromMins(movie.duration)}
           </p>
         </div>
-        <button className={movieFavoriteButtonClassName} aria-label="favorite" type="button" onClick={handleMovieFavorite}></button>
+        <button
+          className={movieFavoriteButtonClassName}
+          aria-label="favorite"
+          type="button"
+          onClick={
+            pathname === '/movies' ?
+            handleMovieFavorite :
+            handleDeleteSavedMovie
+          }
+        />
       </div>
-      <img
-        src={movie.image}
-        alt="Обложка фильма"
-        className="movie-card__image"
-      />
+      <a
+        href={movie.trailerLink}
+        target="_blank" rel="noreferrer"
+      >
+        <img
+          src={image}
+          alt="Обложка фильма"
+          className="movie-card__image"
+        />
+      </a>
     </section>
   )
 }

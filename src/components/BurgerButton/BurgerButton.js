@@ -7,7 +7,6 @@ function BurgerButton() {
 
   function handleOpenBurger(event) {
     isOpenBurger(!openBurger);
-    console.log(event);
   }
 
   const thisPageMoviesClassName = (
@@ -15,21 +14,21 @@ function BurgerButton() {
       ? 'burger__menu-link_active'
       : ''
     }`
-  );
+  )
 
   const thisPageSaveMoviesClassName = (
     `burger__menu-link ${pathname === '/saved-movies'
       ? 'burger__menu-link_active'
       : ''
     }`
-  );
+  )
 
   const thisPageMainClassName = (
     `burger__menu-link ${pathname === '/'
       ? 'burger__menu-link_active'
       : ''
     }`
-  );
+  )
 
 
   return (

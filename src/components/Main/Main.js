@@ -7,10 +7,12 @@ import AboutMe from './AboutMe/AboutMe.js';
 import Portfolio from './Portfolio/Portfolio.js';
 import Footer from '../Footer/Footer.js';
 
-function Main() {
+function Main({ loggedIn }) {
   return (
     <div className='page__container'>
-      <Header />
+      <Header
+        loggedIn={loggedIn}
+      />
       <main className="main">
         <Promo />
         <NavTab />
