@@ -1,4 +1,4 @@
-import studentPhoto from '../../../images/photo-studet.png';
+import studentPhoto from '../../../images/photo.jpg';
 
 function AboutMe() {
   return (
@@ -9,11 +9,11 @@ function AboutMe() {
       <h2 className="about-me__title">Студент</h2>
       <div className="about-me__container">
         <div className="about-me__desc">
-          <h3 className="about-me__desc-title">Виталий</h3>
-          <p className="about-me__desc-subtitle">Фронтенд-разработчик, 30&nbsp;лет</p>
+          <h3 className="about-me__desc-title">Олег</h3>
+          <p className="about-me__desc-subtitle">Junior Фронтенд-разработчик, 28&nbsp;лет</p>
           <p className="about-me__desc-text">
-            Я&nbsp;родился и&nbsp;живу в&nbsp;Саратове, закончил факультет экономики СГУ. У&nbsp;меня есть жена и&nbsp;дочь. Я&nbsp;люблю слушать музыку, а&nbsp;ещё увлекаюсь бегом. Недавно начал кодить.
-            С&nbsp;2015 года работал в&nbsp;компании &laquo;СКБ Контур&raquo;. После того, как прошёл курс по&nbsp;веб-разработке, начал заниматься фриланс-заказами и&nbsp;ушёл с&nbsp;постоянной работы.
+            Я&nbsp;родился и&nbsp;живу в&nbsp;Иваново, закончил факультет теплоэнергетики ИГЭУ. Я&nbsp;люблю слушать музыку, а&nbsp;ещё увлекаюсь велосипедом. Недавно начал кодить.
+            После того, как прошёл курс по&nbsp;веб-разработке, интерес только усилился. Сейчас в планах ознакомиться с фреймворком Vue и изучить TypeScript.
           </p>
           <a
             href="https://github.com/Astrafob"
